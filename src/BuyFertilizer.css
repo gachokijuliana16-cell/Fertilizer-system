@@ -1,0 +1,112 @@
+.buy-container {
+  min-height: 100vh;
+  background: #f5f7fb;
+  padding: 40px;
+}
+
+.buy-card {
+  background: white;
+  max-width: 500px;
+  margin: auto;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.buy-card h1 {
+  text-align: center;
+  color: #1b5e20;
+}
+
+.buy-card h3 {
+  margin-top: 20px;
+}
+
+.buy-card label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.buy-card select,
+.buy-card input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+
+.payment-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+
+.payment-buttons button {
+
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #2e7d32;
+  color: white;
+
+}
+
+
+.confirm-btn {
+
+  width: 100%;
+  margin-top: 25px;
+  padding: 14px;
+  background: #1565c0;
+  color:white;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+
+}
+.active-payment {
+
+  background: #1565c0 !important;
+
+  transform: scale(1.05);
+
+}
+.payment-details {
+
+  margin-top: 20px;
+
+  padding: 15px;
+
+  background: #f1f8e9;
+
+  border-radius: 10px;
+
+}
+
+
+.payment-details h3 {
+
+  color: #1b5e20;
+
+}
+
+
+.payment-details input {
+
+  width: 100%;
+
+  padding: 10px;
+
+  margin-top: 8px;
+
+  border-radius: 8px;
+
+  border: 1px solid #ccc;
+
+}

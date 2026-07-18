@@ -1,0 +1,194 @@
+* {
+
+  font-family:"Segoe UI", Arial, sans-serif;
+
+}
+
+
+
+.add-stock-page {
+
+  min-height:100vh;
+
+  background:white;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  padding:30px;
+
+  margin-left:250px;
+
+}
+
+
+
+
+
+.add-stock-card {
+
+  width:500px;
+
+  background:white;
+
+  padding:40px;
+
+  border-radius:20px;
+
+  border:1px solid #e2e8f0;
+
+  box-shadow:0 8px 25px rgba(0,0,0,0.08);
+
+}
+
+
+
+
+
+.logo {
+
+  font-size:50px;
+
+  text-align:center;
+
+  margin-bottom:10px;
+
+}
+
+
+
+
+
+.add-stock-card h1 {
+
+  text-align:center;
+
+  color:#166534;
+
+  font-size:25px;
+
+  margin-bottom:10px;
+
+}
+
+
+
+
+
+.add-stock-card h2 {
+
+  text-align:center;
+
+  color:#15803d;
+
+  margin-bottom:30px;
+
+}
+
+
+
+
+
+/* Form */
+
+.add-stock-card form {
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:18px;
+
+}
+
+
+
+
+
+.add-stock-card input {
+
+  padding:14px;
+
+  border:1px solid #cbd5e1;
+
+  border-radius:10px;
+
+  font-size:16px;
+
+}
+
+
+
+
+
+.add-stock-card input:focus {
+
+  outline:none;
+
+  border-color:#15803d;
+
+  box-shadow:0 0 5px rgba(21,128,61,0.3);
+
+}
+
+
+
+
+
+/* Button */
+
+.add-stock-card button {
+
+  background:#15803d;
+
+  color:white;
+
+  border:none;
+
+  padding:15px;
+
+  border-radius:10px;
+
+  font-size:16px;
+
+  font-weight:600;
+
+  cursor:pointer;
+
+}
+
+
+
+
+
+.add-stock-card button:hover {
+
+  background:#166534;
+
+}
+
+
+
+
+
+@media(max-width:900px){
+
+
+  .add-stock-page {
+
+    margin-left:0;
+
+  }
+
+
+  .add-stock-card {
+
+    width:90%;
+
+  }
+
+
+}

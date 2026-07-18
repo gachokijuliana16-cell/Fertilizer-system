@@ -1,0 +1,299 @@
+* {
+
+  font-family: "Segoe UI", Arial, sans-serif;
+
+}
+
+
+
+.stock-page {
+
+  min-height:100vh;
+
+  background:white;
+
+  padding:30px;
+
+  margin-left:250px;
+
+}
+
+
+
+/* Page title */
+
+.stock-page h1 {
+
+  color:#166534;
+
+  font-size:30px;
+
+  margin-bottom:25px;
+
+}
+
+
+
+/* Summary section */
+
+.stock-summary {
+
+  display:grid;
+
+  grid-template-columns:repeat(2,1fr);
+
+  gap:25px;
+
+  margin-bottom:30px;
+
+}
+
+
+
+.summary-card {
+
+  background:white;
+
+  padding:25px;
+
+  border-radius:16px;
+
+  border:1px solid #e2e8f0;
+
+  box-shadow:0 4px 15px rgba(0,0,0,0.08);
+
+}
+
+
+
+.summary-card h3 {
+
+  color:#15803d;
+
+  margin-bottom:10px;
+
+}
+
+
+
+.summary-card p {
+
+  font-size:26px;
+
+  font-weight:bold;
+
+  color:#1e293b;
+
+}
+
+
+
+
+
+/* Main stock section */
+
+.stock-card {
+
+  background:white;
+
+  padding:30px;
+
+  border-radius:18px;
+
+  border:1px solid #e2e8f0;
+
+  box-shadow:0 4px 15px rgba(0,0,0,0.08);
+
+}
+
+
+
+.stock-card h2 {
+
+  color:#166534;
+
+  margin-bottom:20px;
+
+}
+
+
+
+
+
+/* Search bar */
+
+.search-box {
+
+  width:350px;
+
+  padding:12px 15px;
+
+  border:1px solid #cbd5e1;
+
+  border-radius:10px;
+
+  margin-bottom:20px;
+
+  font-size:15px;
+
+}
+
+
+
+.search-box:focus {
+
+  outline:none;
+
+  border-color:#15803d;
+
+}
+
+
+
+
+
+/* Table */
+
+table {
+
+  width:100%;
+
+  border-collapse:collapse;
+
+}
+
+
+
+thead th {
+
+  background:#15803d;
+
+  color:white;
+
+  padding:15px;
+
+  text-align:left;
+
+}
+
+
+
+tbody td {
+
+  padding:15px;
+
+  border-bottom:1px solid #e2e8f0;
+
+  color:#334155;
+
+}
+
+
+
+tbody tr:hover {
+
+  background:#f0fdf4;
+
+}
+
+
+
+
+
+/* Status */
+
+.status-available {
+
+  background:#dcfce7;
+
+  color:#166534;
+
+  padding:6px 12px;
+
+  border-radius:20px;
+
+  font-weight:600;
+
+}
+
+
+
+.status-low {
+
+  background:#fee2e2;
+
+  color:#991b1b;
+
+  padding:6px 12px;
+
+  border-radius:20px;
+
+  font-weight:600;
+
+}
+
+
+
+
+
+/* Delete button */
+
+.delete-btn {
+
+  background:#dc2626;
+
+  color:white;
+
+  border:none;
+
+  padding:8px 14px;
+
+  border-radius:8px;
+
+  cursor:pointer;
+
+  font-weight:600;
+
+}
+
+
+
+.delete-btn:hover {
+
+  background:#991b1b;
+
+}
+
+
+
+
+
+/* Responsive */
+
+@media(max-width:900px){
+
+
+  .stock-page {
+
+    margin-left:0;
+
+  }
+
+
+  .stock-summary {
+
+    grid-template-columns:1fr;
+
+  }
+
+
+  table {
+
+    display:block;
+
+    overflow-x:auto;
+
+  }
+
+
+}

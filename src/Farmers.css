@@ -1,0 +1,409 @@
+* {
+
+  font-family:"Segoe UI", Arial, sans-serif;
+
+}
+
+
+
+.farmers-page {
+
+  min-height:100vh;
+
+  background:white;
+
+  padding:30px;
+
+  margin-left:250px;
+
+}
+
+
+
+
+
+.farmers-page h1 {
+
+  color:#166534;
+
+  font-size:30px;
+
+  margin-bottom:30px;
+
+}
+
+
+
+
+
+.farmers-card {
+
+  background:white;
+
+  border:1px solid #e2e8f0;
+
+  padding:30px;
+
+  border-radius:18px;
+
+  box-shadow:0 4px 15px rgba(0,0,0,0.08);
+
+  margin-bottom:30px;
+
+}
+
+
+
+
+
+.farmers-card h2 {
+
+  color:#15803d;
+
+  margin-bottom:20px;
+
+}
+
+
+
+
+
+/* Form */
+
+.farmers-card form {
+
+  display:grid;
+
+  grid-template-columns:repeat(2,1fr);
+
+  gap:20px;
+
+}
+
+
+
+
+
+.farmers-card input {
+
+  padding:14px;
+
+  border:1px solid #cbd5e1;
+
+  border-radius:10px;
+
+  font-size:15px;
+
+}
+
+
+
+
+
+.farmers-card input:focus {
+
+  outline:none;
+
+  border-color:#15803d;
+
+}
+
+
+
+
+
+.farmers-card button {
+
+  grid-column:span 2;
+
+  background:#15803d;
+
+  color:white;
+
+  border:none;
+
+  padding:14px;
+
+  border-radius:10px;
+
+  cursor:pointer;
+
+  font-weight:600;
+
+  font-size:16px;
+
+}
+
+
+
+
+
+.farmers-card button:hover {
+
+  background:#166534;
+
+}
+
+
+
+
+
+/* Table */
+
+table {
+
+  width:100%;
+
+  border-collapse:collapse;
+
+}
+
+
+
+thead th {
+
+  background:#15803d;
+
+  color:white;
+
+  padding:15px;
+
+  text-align:left;
+
+}
+
+
+
+tbody td {
+
+  padding:15px;
+
+  border-bottom:1px solid #e2e8f0;
+
+}
+
+
+
+tbody tr:hover {
+
+  background:#f0fdf4;
+
+}
+
+
+
+
+
+@media(max-width:900px){
+
+
+  .farmers-page{
+
+    margin-left:0;
+
+  }
+
+
+  .farmers-card form{
+
+    grid-template-columns:1fr;
+
+  }
+
+
+  .farmers-card button{
+
+    grid-column:span 1;
+
+  }
+
+
+}
+.edit-btn {
+
+  background:#15803d;
+
+  color:white;
+
+  border:none;
+
+  padding:8px 14px;
+
+  border-radius:8px;
+
+  cursor:pointer;
+
+  margin-right:10px;
+
+  font-weight:600;
+
+}
+
+
+.edit-btn:hover {
+
+  background:#166534;
+
+}
+
+
+
+.delete-btn {
+
+  background:#dc2626;
+
+  color:white;
+
+  border:none;
+
+  padding:8px 14px;
+
+  border-radius:8px;
+
+  cursor:pointer;
+
+  font-weight:600;
+
+}
+
+
+.delete-btn:hover {
+
+  background:#991b1b;
+
+}
+/* Search Box */
+
+.search-box{
+
+width:100%;
+
+padding:12px;
+
+margin:20px 0;
+
+border-radius:10px;
+
+border:1px solid #ddd;
+
+font-size:15px;
+
+}
+
+
+
+/* View Button */
+
+.view-btn{
+
+background:#1976d2;
+
+color:white;
+
+border:none;
+
+padding:8px 14px;
+
+border-radius:8px;
+
+cursor:pointer;
+
+margin-right:8px;
+
+transition:.3s;
+
+}
+
+.view-btn:hover{
+
+background:#0d47a1;
+
+}
+
+
+
+/* Farmer Popup */
+
+.farmer-modal{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:rgba(0,0,0,.45);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+z-index:999;
+
+}
+
+
+
+.farmer-modal-card{
+
+background:white;
+
+width:420px;
+
+padding:30px;
+
+border-radius:18px;
+
+box-shadow:0 15px 35px rgba(0,0,0,.25);
+
+animation:popup .3s ease;
+
+}
+
+
+
+.farmer-modal-card h2{
+
+margin-bottom:20px;
+
+color:#1b5e20;
+
+}
+
+
+
+.farmer-modal-card p{
+
+margin:12px 0;
+
+font-size:16px;
+
+}
+
+
+
+@keyframes popup{
+
+from{
+
+transform:scale(.8);
+
+opacity:0;
+
+}
+
+to{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+}

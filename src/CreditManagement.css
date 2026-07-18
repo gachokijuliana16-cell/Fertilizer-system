@@ -1,0 +1,126 @@
+*{
+  font-family:"Segoe UI", Arial, sans-serif;
+}
+
+
+.credit-page{
+
+  min-height:100vh;
+  background:#f8fafc;
+  padding:30px;
+
+}
+
+
+
+.credit-page h1{
+
+  color:#166534;
+  text-align:center;
+  margin-bottom:30px;
+
+}
+
+
+
+.credit-card{
+
+  background:white;
+  padding:30px;
+  border-radius:16px;
+
+  box-shadow:0 4px 15px rgba(0,0,0,0.08);
+
+}
+
+
+
+.credit-card h2{
+
+  color:#15803d;
+  margin-bottom:20px;
+
+}
+
+
+
+table{
+
+  width:100%;
+  border-collapse:collapse;
+
+}
+
+
+
+th{
+
+  background:#15803d;
+  color:white;
+  padding:15px;
+  text-align:left;
+
+}
+
+
+
+td{
+
+  padding:15px;
+  border-bottom:1px solid #ddd;
+  color:#1e293b;
+
+}
+
+
+
+button{
+
+  background:#15803d;
+  color:white;
+
+  border:none;
+
+  padding:10px 15px;
+
+  border-radius:8px;
+
+  cursor:pointer;
+
+}
+
+
+
+button:hover{
+
+  background:#166534;
+
+}
+
+
+
+.pending{
+
+  background:#facc15;
+
+  color:#713f12;
+
+  padding:6px 12px;
+
+  border-radius:20px;
+
+}
+
+
+
+.paid{
+
+  background:#22c55e;
+
+  color:white;
+
+  padding:6px 12px;
+
+  border-radius:20px;
+
+}
