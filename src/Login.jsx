@@ -9,20 +9,22 @@ function Login() {
   async function handleLogin(e) {
     e.preventDefault();
 
-    console.log("Login started");
+    alert("Login button reached");
 
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
-    console.log("Auth result:", data);
-    console.log("Auth error:", error);
+    console.log("DATA:", data);
+    console.log("ERROR:", error);
 
     if (error) {
-      alert(error.message);
+      alert("Supabase error: " + error.message);
       return;
     }
+
+    alert("Supabase login successful");
 
     const { data: userData, error: userError } = await supabase
       .from("users")
@@ -30,13 +32,15 @@ function Login() {
       .eq("auth_user_id", data.user.id)
       .single();
 
-    console.log("User data:", userData);
-    console.log("User error:", userError);
+    console.log("USER:", userData);
+    console.log("USER ERROR:", userError);
 
     if (userError) {
-      alert(userError.message);
+      alert("User table error: " + userError.message);
       return;
     }
+
+    alert("Role found: " + userData.role);
 
     if (userData.role === "farmer") {
       window.location.href = "/farmer-dashboard";
@@ -80,11 +84,9 @@ function Login() {
             required
           />
 
-          <button 
-  type="submit"
->
-  Login
-</button>
+          <button type="submit">
+            Login
+          </button>
 
         </form>
 
