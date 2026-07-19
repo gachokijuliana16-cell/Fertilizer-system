@@ -12,115 +12,48 @@ function Login() {
 
 
 
-  async function handleLogin(e){
+ async function handleLogin(e) {
+  e.preventDefault();
 
-    e.preventDefault();
+  console.log("Login started");
 
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
 
+  console.log("Auth result:", data);
+  console.log("Auth error:", error);
 
-    const {data,error} = await supabase.auth.signInWithPassword({
-
-      email,
-
-      password
-
-    });
-
-
-
-    if(error){
-
-      alert(error.message);
-
-      return;
-
-    }
-
-
-
-    const {data:userData,error:userError} = await supabase
-
-      .from("users")
-
-      .select("role")
-
-      .eq("id", data.user.id)
-
-      .single();
-
-
-
-    if(userError){
-
-      alert(userError.message);
-
-      return;
-
-    }
-
-
-
-    if(userData.role === "farmer"){
-
-      window.location.href="/farmer-dashboard";
-
-    }
-
-    else if(userData.role === "warehouse_manager"){
-
-      const { data: profile, error } = await supabase
-  .from("users")
-  .select("role")
-  .eq("id", data.user.id)
-  .single();
-
-
-if(error){
-
-  console.log(error.message);
-
-  return;
-
-}
-
-
-if(profile.role === "admin"){
-
-  window.location.href="/admin-dashboard";
-
-}
-
-else if(profile.role === "warehouse"){
-
-  window.location.href="/warehouse-dashboard";
-
-}
-
-else if(profile.role === "farmer"){
-
-  window.location.href="/farmer-dashboard";
-
-}
-
-    }
-
-    else if(userData.role === "admin"){
-
-      window.location.href="/admin-dashboard";
-
-    }
-
-    else{
-
-      alert("Role not assigned.");
-
-    }
-
-
-
+  if (error) {
+    alert(error.message);
+    return;
   }
 
+  const { data: userData, error: userError } = await supabase
+    .from("users")
+    .select("role")
+    .eq("auth_user_id", data.user.id)
+    .single();
 
+  console.log("User data:", userData);
+  console.log("User error:", userError);
+
+  if (userError) {
+    alert(userError.message);
+    return;
+  }
+
+  if (userData.role === "farmer") {
+    window.location.href = "/farmer-dashboard";
+  } else if (userData.role === "warehouse_manager") {
+    window.location.href = "/warehouse-dashboard";
+  } else if (userData.role === "admin") {
+    window.location.href = "/admin-dashboard";
+  } else {
+    alert("Role not assigned.");
+  }
+}
 
   return (
 
