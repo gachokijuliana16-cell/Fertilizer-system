@@ -6,52 +6,49 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  async function handleLogin(e) {
-    e.preventDefault();
+ async function handleLogin(e) {
+  e.preventDefault();
 
-    alert("Login button reached");
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
 
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+  console.log("DATA:", data);
+  console.log("ERROR:", error);
 
-    console.log("DATA:", data);
-    console.log("ERROR:", error);
-
-    if (error) {
-      alert("Supabase error: " + error.message);
-      return;
-    }
-
-    alert("Supabase login successful");
-
-    const { data: userData, error: userError } = await supabase
-      .from("users")
-      .select("role")
-      .eq("auth_user_id", data.user.id)
-      .single();
-
-    console.log("USER:", userData);
-    console.log("USER ERROR:", userError);
-
-    if (userError) {
-      alert("User table error: " + userError.message);
-      return;
-    }
-
-    alert("Role found: " + userData.role);
-
-    if (userData.role === "farmer") {
-      window.location.href = "/farmer-dashboard";
-    } else if (userData.role === "warehouse_manager") {
-      window.location.href = "/warehouse-dashboard";
-    } else if (userData.role === "admin") {
-      window.location.href = "/admin-dashboard";
-    } else {
-      alert("Role not assigned.");
-    }
+  if (error) {
+    alert(error.message);
+    return;
   }
+
+  const { data: userData, error: userError } = await supabase
+    .from("users")
+    .select("role")
+    .eq("auth_user_id", data.user.id)
+    .single();
+
+  console.log("USER:", userData);
+  console.log("USER ERROR:", userError);
+
+  if (userError) {
+    alert(userError.message);
+    return;
+  }
+
+  if (userData.role === "farmer") {
+    window.location.href = "/farmer-dashboard";
+  } 
+  else if (userData.role === "warehouse_manager") {
+    window.location.href = "/warehouse-dashboard";
+  } 
+  else if (userData.role === "admin") {
+    window.location.href = "/admin-dashboard";
+  } 
+  else {
+    alert("Role not assigned.");
+  }
+}
 
   return (
     <div className="login-container">
