@@ -25,7 +25,9 @@ function StockChart({ stock }) {
 
   const labels = stock.map(item => item.fertilizer_type);
 
-  const quantities = stock.map(item => Number(item.quantity_available));
+  const quantities = stock.map(
+    item => Number(item.quantity_available)
+  );
 
   const data = {
 
@@ -36,7 +38,7 @@ function StockChart({ stock }) {
       {
         label: "Available Bags",
         data: quantities,
-        backgroundColor: "#22c55e",
+        backgroundColor: "rgba(34,197,94,0.7)",
       },
 
     ],
