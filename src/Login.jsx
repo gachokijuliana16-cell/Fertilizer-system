@@ -12,8 +12,7 @@ function Login() {
 
 
 
- async function handleLogin(e) {
-  e.preventDefault();
+async function handleLogin() {
 
   console.log("Login started");
 
@@ -110,11 +109,9 @@ function Login() {
 
 
 
-          <button type="submit">
-
-            Login
-
-          </button>
+      <button type="button" onClick={handleLogin}>
+  Login
+</button>
 
 
 
