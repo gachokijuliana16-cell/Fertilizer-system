@@ -1,8 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./WarehouseDashboard.css";
 import Sidebar from "./Sidebar";
+import { supabase } from "./supabaseClient";
 
 function WarehouseDashboard() {
+  const [managerName, setManagerName] = useState("Warehouse Manager");
+useEffect(() => {
+  async function loadUser() {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) return;
+
+    const { data, error } = await supabase
+      .from("users")
+      .select("full_name")
+      .eq("auth_user_id", user.id)
+      .single();
+
+    if (!error && data) {
+      setManagerName(data.full_name);
+    }
+  }
+
+  loadUser();
+}, []); 
   return (
     <div className="dashboard">
 
@@ -11,7 +34,12 @@ function WarehouseDashboard() {
       <div className="main">
 
         <header className="header">
-          <h2>Warehouse Dashboard</h2>
+          <div>
+  <h2>Warehouse Dashboard</h2>
+  <p style={{ margin: 0, color: "#666" }}>
+    Welcome, {managerName}
+  </p>
+</div>
 
           <button
             className="logout-btn"
