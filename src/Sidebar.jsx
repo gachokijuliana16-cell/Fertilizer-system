@@ -1,47 +1,45 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import "./Sidebar.css";
 
 function Sidebar() {
-
-  const navigate = useNavigate();
-
   return (
+    <div
+      style={{
+        width: "240px",
+        background: "#1B5E20",
+        color: "white",
+        height: "100vh",
+        padding: "20px",
+      }}
+    >
+      <h2>🌱 Tea SACCO</h2>
 
-    <div className="sidebar">
+      <hr />
 
-      <button onClick={() => navigate("/warehouse-dashboard")}>
-        Dashboard
-      </button>
+      <p style={{ marginTop: "25px", cursor: "pointer" }}>
+        📊 Dashboard
+      </p>
 
-      <button onClick={() => navigate("/fertilizer-stock")}>
-        Fertilizer Stock
-      </button>
+      <p style={{ cursor: "pointer" }}>
+        📦 Stock
+      </p>
 
-      <button onClick={() => navigate("/add-stock")}>
-        Add Stock
-      </button>
+      <p style={{ cursor: "pointer" }}>
+        💰 Sales
+      </p>
 
-      <button onClick={() => navigate("/farmers")}>
-        Farmers
-      </button>
+      <p style={{ cursor: "pointer" }}>
+        👨‍🌾 Farmers
+      </p>
 
-      <button onClick={() => navigate("/transactions")}>
-        Transactions
-      </button>
+      <p style={{ cursor: "pointer" }}>
+        📄 Reports
+      </p>
 
-      <button onClick={() => navigate("/credit-management")}>
-        Credit Management
-      </button>
-
-      <button onClick={() => navigate("/reports")}>
-        Reports
-      </button>
-
+      <p style={{ cursor: "pointer" }}>
+        ⚙️ Settings
+      </p>
     </div>
-
   );
-
 }
 
 export default Sidebar;

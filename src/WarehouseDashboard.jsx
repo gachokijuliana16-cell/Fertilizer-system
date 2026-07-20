@@ -1,8 +1,18 @@
+import Sidebar from "./Sidebar";
 import React from "react";
 
 function WarehouseDashboard() {
   return (
-    <div style={{ background: "#f5f7fa", minHeight: "100vh" }}>
+    <div
+  style={{
+    display: "flex",
+    background: "#f5f7fa",
+    minHeight: "100vh",
+  }}
+>
+  <Sidebar />
+
+<div style={{ flex: 1 }}>
       {/* Header */}
       <header
         style={{
@@ -136,6 +146,7 @@ function WarehouseDashboard() {
           </table>
         </div>
       </div>
+    </div>
     </div>
   );
 }
