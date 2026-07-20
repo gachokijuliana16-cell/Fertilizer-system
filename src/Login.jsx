@@ -9,11 +9,41 @@ function Login() {
 async function handleLogin(e) {
   e.preventDefault();
 
-  alert("Login clicked");
+  try {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
 
-  window.location.href = "/warehouse-dashboard";
+    if (error) {
+      alert(error.message);
+      return;
+    }
+
+    const { data: userData, error: userError } = await supabase
+      .from("users")
+      .select("role")
+      .eq("auth_user_id", data.user.id)
+      .single();
+
+    if (userError) {
+      alert(userError.message);
+      return;
+    }
+
+    if (userData.role === "warehouse_manager") {
+      window.location.href = "/warehouse-dashboard";
+    } else if (userData.role === "admin") {
+      window.location.href = "/admin-dashboard";
+    } else if (userData.role === "farmer") {
+      window.location.href = "/farmer-dashboard";
+    } else {
+      alert("Role not assigned.");
+    }
+  } catch (err) {
+    alert(err.message);
+  }
 }
-
   return (
     <div className="login-container">
 
