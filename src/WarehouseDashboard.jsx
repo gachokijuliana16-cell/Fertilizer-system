@@ -5,27 +5,72 @@ import { supabase } from "./supabaseClient";
 
 function WarehouseDashboard() {
   const [managerName, setManagerName] = useState("Warehouse Manager");
+  const [totalStock, setTotalStock] = useState(0);
+const [farmerCount, setFarmerCount] = useState(0);
+const [revenue, setRevenue] = useState(0);
+const [recentActivities, setRecentActivities] = useState([]);
 useEffect(() => {
-  async function loadUser() {
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
+  loadUser();
+  loadDashboardData();
+}, []);
 
-    if (!user) return;
+async function loadUser() {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
-    const { data, error } = await supabase
-      .from("users")
-      .select("full_name")
-      .eq("auth_user_id", user.id)
-      .single();
+  if (!user) return;
 
-    if (!error && data) {
-      setManagerName(data.full_name);
-    }
+  const { data, error } = await supabase
+    .from("users")
+    .select("full_name")
+    .eq("auth_user_id", user.id)
+    .single();
+
+  if (!error && data) {
+    setManagerName(data.full_name);
+  }
+}
+
+async function loadDashboardData() {
+  // Total Stock
+  const { data: stock } = await supabase
+    .from("fertilizer-stock")
+    .select("quantity_available");
+
+  if (stock) {
+    const total = stock.reduce(
+      (sum, item) => sum + Number(item.quantity_available || 0),
+      0
+    );
+
+    setTotalStock(total);
   }
 
-  loadUser();
-}, []); 
+  // Farmers Count
+  const { count } = await supabase
+    .from("farmers")
+    .select("*", { count: "exact", head: true });
+
+  setFarmerCount(count || 0);
+
+  // Transactions
+  const { data: transactions } = await supabase
+    .from("transactions")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (transactions) {
+    setRecentActivities(transactions.slice(0, 5));
+
+    const totalRevenue = transactions.reduce(
+      (sum, item) => sum + Number(item.payment_amount || 0),
+      0
+    );
+
+    setRevenue(totalRevenue);
+  }
+}
   return (
     <div className="dashboard">
 
@@ -43,7 +88,10 @@ useEffect(() => {
 
           <button
             className="logout-btn"
-            onClick={() => (window.location.href = "/")}
+            onClick={async () => {
+  await supabase.auth.signOut();
+  window.location.href = "/";
+}}
           >
             Logout
           </button>
@@ -55,7 +103,7 @@ useEffect(() => {
 
             <div className="card">
               <h4>Total Fertilizer Stock</h4>
-              <h2>1,250</h2>
+              <h2>{totalStock} Bags</h2>
             </div>
 
             <div className="card">
@@ -65,12 +113,12 @@ useEffect(() => {
 
             <div className="card">
               <h4>Revenue</h4>
-              <h2>KSh 246,000</h2>
+              <h2>KSh {revenue.toLocaleString()}</h2>
             </div>
 
             <div className="card">
               <h4>Registered Farmers</h4>
-              <h2>536</h2>
+              <h2>{farmerCount}</h2>
             </div>
 
           </div>
@@ -89,33 +137,25 @@ useEffect(() => {
                 </tr>
               </thead>
 
-              <tbody>
+<tbody>
+  {recentActivities.map((item) => (
+    <tr key={item.id}>
+      <td>
+        {item.created_at
+          ? new Date(item.created_at).toLocaleDateString()
+          : "-"}
+      </td>
 
-                <tr>
-                  <td>20 Jul 2026</td>
-                  <td>Received 50 Bags of NPK Fertilizer</td>
-                  <td>Warehouse Manager</td>
-                </tr>
+      <td>
+        {item.fertilizer_type || "Transaction"}
+      </td>
 
-                <tr>
-                  <td>20 Jul 2026</td>
-                  <td>Sold 30 Bags to Farmer</td>
-                  <td>Cashier</td>
-                </tr>
-
-                <tr>
-                  <td>20 Jul 2026</td>
-                  <td>Generated Daily Report</td>
-                  <td>Administrator</td>
-                </tr>
-
-                <tr>
-                  <td>19 Jul 2026</td>
-                  <td>Added New Fertilizer Stock</td>
-                  <td>Warehouse Manager</td>
-                </tr>
-
-              </tbody>
+      <td>
+        {item.payment_method || "System"}
+      </td>
+    </tr>
+  ))}
+</tbody>
 
             </table>
 
