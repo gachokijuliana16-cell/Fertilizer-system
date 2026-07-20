@@ -14,6 +14,7 @@ async function handleLogin(e) {
       email,
       password,
     });
+    console.log("LOGIN RESULT", data, error);
 
     if (error) {
       alert(error.message);
@@ -25,6 +26,7 @@ async function handleLogin(e) {
       .select("role")
       .eq("auth_user_id", data.user.id)
       .single();
+      console.log("USER TABLE", userData, userError);
 
     if (userError) {
       alert(userError.message);

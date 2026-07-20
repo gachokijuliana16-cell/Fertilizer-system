@@ -44,20 +44,19 @@ function Register() {
       .from("users")
 
       .insert([
+{
+  id: crypto.randomUUID(),
 
-        {
+  auth_user_id: data.user.id,
 
-          id: data.user.id,
+  full_name: fullName,
 
-          full_name: fullName,
+  email: email,
 
-          email: email,
+  phone: phone,
 
-          phone: phone,
-
-          role: "farmer"
-
-        }
+  role: "farmer"
+}
 
       ]);
 
