@@ -6,47 +6,54 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
- async function handleLogin(e) {
+async function handleLogin(e) {
   e.preventDefault();
 
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
-  });
+  console.log("LOGIN CLICKED");
 
-  console.log("DATA:", data);
-  console.log("ERROR:", error);
+  alert("Login button reached");
 
-  if (error) {
-    alert(error.message);
-    return;
-  }
+  try {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
 
-  const { data: userData, error: userError } = await supabase
-    .from("users")
-    .select("role")
-    .eq("auth_user_id", data.user.id)
-    .single();
+    console.log("DATA:", data);
+    console.log("ERROR:", error);
 
-  console.log("USER:", userData);
-  console.log("USER ERROR:", userError);
+    if (error) {
+      alert(error.message);
+      return;
+    }
 
-  if (userError) {
-    alert(userError.message);
-    return;
-  }
+    alert("Supabase login successful");
 
-  if (userData.role === "farmer") {
-    window.location.href = "/farmer-dashboard";
-  } 
-  else if (userData.role === "warehouse_manager") {
-    window.location.href = "/warehouse-dashboard";
-  } 
-  else if (userData.role === "admin") {
-    window.location.href = "/admin-dashboard";
-  } 
-  else {
-    alert("Role not assigned.");
+    const { data: userData, error: userError } = await supabase
+      .from("users")
+      .select("role")
+      .eq("auth_user_id", data.user.id)
+      .single();
+
+    if (userError) {
+      alert(userError.message);
+      return;
+    }
+
+    alert("Role found: " + userData.role);
+
+    if (userData.role === "warehouse_manager") {
+      window.location.href = "/warehouse-dashboard";
+    } else if (userData.role === "admin") {
+      window.location.href = "/admin-dashboard";
+    } else if (userData.role === "farmer") {
+      window.location.href = "/farmer-dashboard";
+    } else {
+      alert("Role not assigned.");
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Unexpected error: " + err.message);
   }
 }
 
