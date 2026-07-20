@@ -14,6 +14,7 @@ function WarehouseDashboard() {
   const [recentActivities, setRecentActivities] = useState([]);
   const [todaySales, setTodaySales] = useState(0);
   const [stock, setStock] = useState([]);
+  const [lowStock, setLowStock] = useState(0);
 
   useEffect(() => {
     loadUser();
@@ -44,7 +45,7 @@ function WarehouseDashboard() {
   .from("fertilizer-stock")
   .select("fertilizer_type, quantity_available");
 
-   if (stock) {
+  if (stock) {
   setStock(stock);
 
   const total = stock.reduce(
@@ -53,6 +54,12 @@ function WarehouseDashboard() {
   );
 
   setTotalStock(total);
+
+  const low = stock.filter(
+    (item) => Number(item.quantity_available) < 20
+  );
+
+  setLowStock(low.length);
 }
 
     // Farmers Count
@@ -158,6 +165,10 @@ function WarehouseDashboard() {
               <h2>{farmerCount}</h2>
             </div>
           </div>
+          <div className="card">
+  <h4>Low Stock Alerts</h4>
+  <h2>{lowStock}</h2>
+</div>
           <div
   style={{
     display: "grid",
@@ -170,6 +181,62 @@ function WarehouseDashboard() {
   <StockChart stock={stock} />
 </div>
 
+         <div className="section">
+  <h3>Notifications</h3>
+
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+      gap: "15px",
+      marginTop: "20px",
+    }}
+  >
+    <div
+      style={{
+        background: "#fff3cd",
+        padding: "15px",
+        borderRadius: "10px",
+      }}
+    >
+      <h4>🔴 Low Stock</h4>
+      <p>{lowStock} fertilizer type(s) need restocking.</p>
+    </div>
+
+    <div
+      style={{
+        background: "#d1fae5",
+        padding: "15px",
+        borderRadius: "10px",
+      }}
+    >
+      <h4>💰 Revenue</h4>
+      <p>KSh {revenue.toLocaleString()}</p>
+    </div>
+
+    <div
+      style={{
+        background: "#dbeafe",
+        padding: "15px",
+        borderRadius: "10px",
+      }}
+    >
+      <h4>📦 Total Stock</h4>
+      <p>{totalStock} Bags Available</p>
+    </div>
+
+    <div
+      style={{
+        background: "#ede9fe",
+        padding: "15px",
+        borderRadius: "10px",
+      }}
+    >
+      <h4>👥 Farmers</h4>
+      <p>{farmerCount} Registered Farmers</p>
+    </div>
+  </div>
+</div>
           <div className="section">
             <h3>Recent Activities</h3>
 
