@@ -29,57 +29,27 @@ function Sidebar() {
 
       <hr style={{ borderColor: "rgba(255,255,255,0.3)" }} />
 
-      <Link
-        to="/warehouse-dashboard"
-        style={linkStyle}
-        onMouseOver={(e) => (e.target.style.color = "#A5D6A7")}
-        onMouseOut={(e) => (e.target.style.color = "white")}
-      >
+      <Link to="/warehouse-dashboard" style={linkStyle}>
         📊 Dashboard
       </Link>
 
-      <Link
-        to="/stock"
-        style={linkStyle}
-        onMouseOver={(e) => (e.target.style.color = "#A5D6A7")}
-        onMouseOut={(e) => (e.target.style.color = "white")}
-      >
+      <Link to="/fertilizer-stock" style={linkStyle}>
         📦 Stock
       </Link>
 
-      <Link
-        to="/sales"
-        style={linkStyle}
-        onMouseOver={(e) => (e.target.style.color = "#A5D6A7")}
-        onMouseOut={(e) => (e.target.style.color = "white")}
-      >
+      <Link to="/transactions" style={linkStyle}>
         💰 Sales
       </Link>
 
-      <Link
-        to="/farmers"
-        style={linkStyle}
-        onMouseOver={(e) => (e.target.style.color = "#A5D6A7")}
-        onMouseOut={(e) => (e.target.style.color = "white")}
-      >
+      <Link to="/farmers" style={linkStyle}>
         👨‍🌾 Farmers
       </Link>
 
-      <Link
-        to="/reports"
-        style={linkStyle}
-        onMouseOver={(e) => (e.target.style.color = "#A5D6A7")}
-        onMouseOut={(e) => (e.target.style.color = "white")}
-      >
+      <Link to="/reports" style={linkStyle}>
         📄 Reports
       </Link>
 
-      <Link
-        to="/settings"
-        style={linkStyle}
-        onMouseOver={(e) => (e.target.style.color = "#A5D6A7")}
-        onMouseOut={(e) => (e.target.style.color = "white")}
-      >
+      <Link to="/credit-management" style={linkStyle}>
         ⚙️ Settings
       </Link>
     </div>
