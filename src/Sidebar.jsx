@@ -1,6 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Sidebar() {
+  const linkStyle = {
+    display: "block",
+    color: "white",
+    textDecoration: "none",
+    padding: "14px 0",
+    fontSize: "18px",
+    fontWeight: "500",
+    transition: "0.3s",
+  };
+
   return (
     <div
       style={{
@@ -9,35 +20,68 @@ function Sidebar() {
         color: "white",
         height: "100vh",
         padding: "20px",
+        boxSizing: "border-box",
       }}
     >
-      <h2>🌱 Tea SACCO</h2>
+      <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
+        🌱 Tea SACCO
+      </h2>
 
-      <hr />
+      <hr style={{ borderColor: "rgba(255,255,255,0.3)" }} />
 
-      <p style={{ marginTop: "25px", cursor: "pointer" }}>
+      <Link
+        to="/warehouse-dashboard"
+        style={linkStyle}
+        onMouseOver={(e) => (e.target.style.color = "#A5D6A7")}
+        onMouseOut={(e) => (e.target.style.color = "white")}
+      >
         📊 Dashboard
-      </p>
+      </Link>
 
-      <p style={{ cursor: "pointer" }}>
+      <Link
+        to="/stock"
+        style={linkStyle}
+        onMouseOver={(e) => (e.target.style.color = "#A5D6A7")}
+        onMouseOut={(e) => (e.target.style.color = "white")}
+      >
         📦 Stock
-      </p>
+      </Link>
 
-      <p style={{ cursor: "pointer" }}>
+      <Link
+        to="/sales"
+        style={linkStyle}
+        onMouseOver={(e) => (e.target.style.color = "#A5D6A7")}
+        onMouseOut={(e) => (e.target.style.color = "white")}
+      >
         💰 Sales
-      </p>
+      </Link>
 
-      <p style={{ cursor: "pointer" }}>
+      <Link
+        to="/farmers"
+        style={linkStyle}
+        onMouseOver={(e) => (e.target.style.color = "#A5D6A7")}
+        onMouseOut={(e) => (e.target.style.color = "white")}
+      >
         👨‍🌾 Farmers
-      </p>
+      </Link>
 
-      <p style={{ cursor: "pointer" }}>
+      <Link
+        to="/reports"
+        style={linkStyle}
+        onMouseOver={(e) => (e.target.style.color = "#A5D6A7")}
+        onMouseOut={(e) => (e.target.style.color = "white")}
+      >
         📄 Reports
-      </p>
+      </Link>
 
-      <p style={{ cursor: "pointer" }}>
+      <Link
+        to="/settings"
+        style={linkStyle}
+        onMouseOver={(e) => (e.target.style.color = "#A5D6A7")}
+        onMouseOut={(e) => (e.target.style.color = "white")}
+      >
         ⚙️ Settings
-      </p>
+      </Link>
     </div>
   );
 }

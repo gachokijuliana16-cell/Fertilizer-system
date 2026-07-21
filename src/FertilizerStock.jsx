@@ -264,7 +264,7 @@ function FertilizerStock() {
 
               <th>Supplier</th>
 
-              <th>Date Added</th>
+              <th>Date Received</th>
 
               <th>Status</th>
 
