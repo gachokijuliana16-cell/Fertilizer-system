@@ -245,7 +245,7 @@ function WarehouseDashboard() {
                 <tr>
                   <th>Date</th>
                   <th>Activity</th>
-                  <th>User</th>
+                  <th>payment method</th>
                 </tr>
               </thead>
 
